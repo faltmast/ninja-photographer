@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scrape artifacts (kept locally only)
+/_scrape/output
+/_scrape/node_modules
