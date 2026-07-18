@@ -47,7 +47,7 @@ export async function POST(request: Request) {
         title: print.title,
         size: size.label,
         priceEUR: String(size.price),
-        fulfilment: "studio-gamut", // open print → order from Studio Gamut, ship to buyer
+        fulfilment: "prodigi", // paid → webhook auto-orders from Prodigi, ships to buyer
       },
       success_url: `${site}/order/complete?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${site}/shop/${print.id}`,

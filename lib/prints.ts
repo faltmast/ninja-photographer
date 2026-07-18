@@ -15,6 +15,7 @@ export type Print = {
   w: number;
   h: number;
   paper: string;       // "Archival matte fine-art, 270gsm · giclée"
+  printFileUrl?: string; // high-res file Prodigi prints from; falls back to the web image
   sizes: PrintSize[];
 };
 
@@ -77,4 +78,17 @@ export function getPrint(id: string): Print | undefined {
 
 export function fromPrice(p: Print): number {
   return Math.min(...p.sizes.map((s) => s.price));
+}
+
+// Prodigi product SKUs per size, for automated fulfilment. Fill these from your
+// Prodigi catalogue for the chosen paper (e.g. Hahnemühle Photo Rag). The
+// "TODO_" values are placeholders — the webhook refuses to order until they're real.
+export const PRODIGI_SKU_BY_SIZE: Record<string, string> = {
+  A4: "TODO_PRODIGI_SKU_A4",
+  A3: "TODO_PRODIGI_SKU_A3",
+  A2: "TODO_PRODIGI_SKU_A2",
+};
+
+export function prodigiSkuFor(sizeLabel: string): string | undefined {
+  return PRODIGI_SKU_BY_SIZE[sizeLabel];
 }
