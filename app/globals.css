@@ -15,10 +15,46 @@
   --font-sans: var(--font-geist-sans);
 }
 
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   font-size: 14px;
   letter-spacing: 0.01em;
+}
+
+/* legal pages (Impressum, Datenschutz, AGB, Widerruf) */
+.legal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 14px;
+}
+.legal h2 {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--foreground);
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+.legal p,
+.legal li {
+  color: color-mix(in srgb, var(--foreground) 80%, transparent);
+  line-height: 1.7;
+}
+.legal a {
+  color: var(--accent);
+}
+.legal ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }

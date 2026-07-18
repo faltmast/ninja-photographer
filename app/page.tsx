@@ -1,6 +1,0 @@
-import { Gallery } from "@/components/Gallery";
-import { galleries } from "@/lib/photos";
-
-export default function Home() {
-  return <Gallery photos={galleries.fieldwork} />;
-}

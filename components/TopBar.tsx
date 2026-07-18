@@ -3,16 +3,20 @@ import Link from "next/link";
 const nav = [
   { href: "/fieldwork", label: "Fieldwork" },
   { href: "/collabs", label: "Collabs" },
+  { href: "/shop", label: "Shop" },
   { href: "/contact", label: "Contact" },
 ];
 
 export function TopBar() {
   return (
-    <header className="w-full px-6 md:px-10 py-5 flex items-center justify-between text-[13px]">
-      <Link href="/" className="font-normal tracking-tight text-foreground">
+    <header className="w-full px-6 md:px-10 py-5 flex items-center justify-between">
+      <Link
+        href="/"
+        className="text-[24px] font-normal tracking-tight text-foreground"
+      >
         Ninja Photographer
       </Link>
-      <nav className="flex items-center gap-6">
+      <nav className="flex items-center gap-6 text-[16px]">
         {nav.map((item) => (
           <Link
             key={item.href}
@@ -30,8 +34,8 @@ export function TopBar() {
           className="text-muted hover:text-foreground transition-colors"
         >
           <svg
-            width="16"
-            height="16"
+            width="22"
+            height="22"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
