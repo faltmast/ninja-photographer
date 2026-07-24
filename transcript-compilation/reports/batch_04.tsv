@@ -1,0 +1,8 @@
+output-filename	fileId	status	niko-label	utterance-count	evidence
+2025-11-28_psl-shareholder.md	1_7LvcNYi7Plh3EVulw2Vg9e5dIXC5jV0	NO_SPEAKER_LABELS	n/a	0	526 lines of undifferentiated prose paragraphs; no speaker attribution prefix of any kind.
+2025-11-27_erwin.md	1RuSDW1m0D0qjvCRwwjqkRNKz7cKuRiZt	NO_SPEAKER_LABELS	n/a	0	413 lines of undifferentiated prose paragraphs; no speaker attribution prefix of any kind.
+2025-11-26_psl.md	10nhvG5K1vmTXXXO9RKLaaZvVRU-9CnWw	NO_SPEAKER_LABELS	n/a	0	604 lines of undifferentiated prose; "Nico" appears only in 3rd-person references.
+2025-11-10_transcript.md	1ONSunBzwBUW-skc0HKqRhvSMfJOnhAj6	NO_SPEAKER_LABELS	n/a	0	459 lines of undifferentiated prose; "Nico" appears only in 3rd-person references.
+2025-11-05_transcript.md	1xjLZK0ORzjpL2sMc1tlLHMrY-XS9ZETD	NO_SPEAKER_LABELS	n/a	0	417 lines of undifferentiated prose; "Nico" appears only in 3rd-person references.
+2025-11-07_session.md	12g-lF5sz-u150r_So1LQ0q0W5VA9sHUO	EXTRACTED_UNCERTAIN	Nikolas	86	Lines 415-784 use 'Nikolas'/'erwin'/'Speaker N' standalone labels; Nikolas is clearly the coach (runs pulse survey, says "part of my advisory", "I've seen CEOs tell me this"). First 414 lines are unlabeled.
+2025-10-09_christian-workshop.md	13929pxH2fbwqhw-HyfuEd2_83rfZSHyd	NO_SPEAKER_LABELS	n/a	0	544 timestamp blocks (HH:MM:SS) with no speaker labels; multiple speakers mixed within single blocks.
