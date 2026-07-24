@@ -1,3 +1,4 @@
+output-filename	fileId	status	niko-label	utterance-count	evidence
 2025-05-14_workshop-day-one.md	1DqNqXmYjXggIiE5qdB8SgaKVFaL8_U6Nz9F5nEL0LRE	EXTRACTED	Nikolas	162	Speaker labeled **Nikolas** throughout; opens session as coach discussing overdrive as default mode and self-care as counterbalance
 2025-05-15_workshop-day-two.md	152_MQPjMgJKE5bf901X3etSsbBYo628J95VpjXiXeTw	NO_SPEAKER_LABELS	n/a	0	Only **HH:MM:SS** timestamp blocks (535) with no speaker names; no attribution possible
 2025-05-16_workshop-day-three.md	1UWhgiSFNNu1bK_XPNyGd8f86jF-qQiEz4W0nRQc2U1E	EXTRACTED	Nikolas	177	Speaker labeled **Nikolas** from line ~443 onward; first ~400 lines are an unlabeled Erwin monologue; Nikolas acts as coach
