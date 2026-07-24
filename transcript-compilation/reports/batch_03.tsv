@@ -1,0 +1,8 @@
+output-filename	fileId	status	niko-label	utterance-count	evidence
+2026-04-12_retreat-day3-w3-niko-closing.md	1MB_rEe8h4RnrzHK-SZxy3AeKSR32nldI	EXTRACTED	Speaker 2	30	Speaker 2 leads guided meditation, closes the retreat with 'I hereby close this'; Speaker 4 says 'thanks for this experience, Nico' addressing him
+2026-04-12_retreat-day3-w2-jan-stress-habits.md	1B6n6pe4RxnBB9MTAICvUPWvsY1Q1LaxF	NO_SPEAKER_LABELS	n/a	0	Transcript uses timestamps only; 'Nicolas' mentioned at 02:22:32 but no lines can be attributed to him
+2026-04-12_retreat-day3-w1-niko-morning-meditation.md	12V46YQL63vXB95O0pITiXdUCmCt_IfpU	EXTRACTED	Speaker 2	37	Speaker 2 leads guided meditation, instructs breath counting, answers questions; session title says 'Niko leads'
+2026-04-11_retreat-day2-w2-jan-meditation-neurofeedback.md	1hkwa9itlF8JCTYYJtSm4YyhSUWXd2zW2	NO_SPEAKER_LABELS	n/a	0	Transcript uses timestamps only; 'Nico' mentioned at line 6 as someone asked to close a door but no lines can be attributed
+2026-04-11_retreat-day2-w1-peter-breathwork.md	1_pyU5wjRGsoiBhW6Gdt7eIsVYbC7Bs7M	NO_SPEAKER_LABELS	n/a	0	Transcript uses timestamps only; Nico referenced as host/co-facilitator multiple times but no lines can be attributed
+2026-04-10_retreat-day1-w1-jan-self-regulation.md	1YkpfJ0e5r_eKMzFQjoDuSHOnoSTAlOWP	EXTRACTED	Speaker 5	7	Speaker 4 (Jan) addresses 'Nicolas, what's your state right now?' and Speaker 5 answers; Speaker 5 introduces Jan and closes session
+2025-12-03_tobias-workshop.md	16oIYFmhRYdpzjaz1QMT3Uj1FkGVquwzy	NO_SPEAKER_LABELS	n/a	0	Merged transcript uses timestamps only; German coaching session between Niko and Tobias Mayer but turns cannot be distinguished
