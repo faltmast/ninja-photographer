@@ -1,0 +1,8 @@
+output-filename	fileId	status	niko-label	utterance-count	evidence
+2026-04-22_robert-cipin-vorgespraech.md	1NF399jyf-jBJccbvm8fdTHjhTjvv4LWo	EXTRACTED	Speaker 1	39	Speaker 2 says "Hi Nico" at 00:00:38; Speaker 1 replies "Hi Robert"; Speaker 1 acts as session host/coach throughout
+2026-04-13_tobias-flaschenland.md	1LtCsF-RUJRs6-XA-kWOX2qmLBFp1Yaql	NO_SPEAKER_LABELS	n/a	0	Timestamp-only format (HH:MM:SS + text); no speaker labels in ~6-hour session
+2026-03-24_beratung-christian-psl.md	1G7LEVwysIiPwi3nmmkTABNFKX5wtuB-I	NO_SPEAKER_LABELS	n/a	0	Timestamp-only format (HH:MM:SS + text); no speaker labels throughout session
+2026-03-23_christian.md	1YPRg6ydxYuBgcKaXO6qVK6tXiaRYgMjJ	NO_SPEAKER_LABELS	n/a	0	Timestamp-only format (HH:MM:SS + text); no speaker labels in ~5.7-hour session
+2026-02-20_tobias.md	1ljcQGuVKUZ6NWZBtcaFVJVVmQqpI7pQm	EXTRACTED_UNCERTAIN	Speaker 2	136	Client mentions "bist ja den ganzen Tag hier bei Nico"; Speaker 2 acts as coach (explains methods, retainer model); first ~400 lines no speaker labels (excluded); no timestamps
+2026-02-01_mietpreishoehe.md	18z0sGgT-TjtJW6fkSPfvPzhtXG8OmpZe	EXTRACTED_UNCERTAIN	Speaker 2	64	Speaker 2 self-introduces as "mein Name ist Nicolas"; acts as tenant seeking legal advice; Speaker 4 is the legal advisor; no timestamps
+2025-12-05_session.md	1vk0Q8RWC0GOj8CSg9vEp2VhRyXyMUfdb	NO_SPEAKER_LABELS	n/a	0	Timestamp-only format (HH:MM:SS + text); workshop with Daniel Seidl; no speaker labels throughout
