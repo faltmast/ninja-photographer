@@ -1,0 +1,8 @@
+output-filename	fileId	status	niko-label	utterance-count	evidence
+2026-06-05_tobias-coaching-call.md	1MPENP_9JSWjW6Eu8HM77BKrGuqlduRzr	NO_SPEAKER_LABELS	n/a	0	File header states "Plaud did not separate speakers; segments are sequential with [start–end] timestamps."
+2026-05-27_erwin-coaching-call.md	1TSJzhUhLjEamO8toltlpsfFeDO4Y4PqO	EXTRACTED	Me	185	JSON field 'transcript' with inline Me:/Them: markers; Me = Nikolas (he owns the recorder, is the coach)
+2026-04-30_tung-workshop.md	1Tl3O-ovGrnfC5Fm66zfn7-EKrFT8IiXC	EXTRACTED	Speaker 1	218	Speaker 1 opens with "Here we go. Was mich interessiert..." and guides the session (agenda-setting, coaching questions, explains methodology at 00:31:34); Speaker 2 is the client (Tung).
+2026-04-28_flaschenland-workshop.md	1Y44y5bZg5kKXgjYTG1vmHZ2y3EEn8rIG	NO_SPEAKER_LABELS	n/a	0	File uses timestamp-only blocks (567 timestamp entries, no speaker prefixes); "Nico" appears once as a name called out in conversation, not as a speaker label.
+2026-04-27_flaschenland-workshop.md	1nJkTbhngOoUw2ZRi1a3nz-sBG3YefDH8	NO_SPEAKER_LABELS	n/a	0	File uses timestamp-only blocks (509 timestamp entries, no speaker prefixes); "Nico" appears as a name addressed in conversation, not as a speaker label.
+2026-04-24_leadership-stress-strategic-role.md	1ZOjfayisqcRkX2E0oLutEbb1tw1osPia	NO_SPEAKER_LABELS	n/a	0	File uses timestamp-only blocks (285 timestamp entries, no speaker prefixes); no Niko/Nico name mentions found.
+2026-04-23_erwin-mirror-intensive.md	1d9LxPY0jZETGaoghUVrw5n_fZhbJObo1	NO_SPEAKER_LABELS	n/a	0	File uses timestamp-only blocks (377 timestamp entries, no speaker prefixes); no Niko/Nico name mentions found.
