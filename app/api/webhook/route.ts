@@ -47,7 +47,6 @@ async function fulfil(session: any) {
     ? decodeOrderItems(session.metadata.items)
     : [{ printId: session.metadata?.printId, size: session.metadata?.size, qty: 1 }];
 
-  const site = process.env.NEXT_PUBLIC_SITE_URL || "";
   const items = ordered.map(({ printId, size, qty }) => {
     const print = printId ? getPrint(printId) : undefined;
     if (!print) throw new Error(`Unknown printId in session: ${printId}`);
@@ -57,7 +56,12 @@ async function fulfil(session: any) {
       throw new Error(`No real Prodigi SKU set for size "${size}"`);
     }
 
-    return { sku, copies: qty, imageUrl: print.printFileUrl || `${site}${print.src}` };
+    // Never print from the web image: it is far below 300dpi at A3/A2.
+    if (!print.printFileUrl) {
+      throw new Error(`No print-resolution file set for "${print.id}" (printFileUrl)`);
+    }
+
+    return { sku, copies: qty, imageUrl: print.printFileUrl };
   });
 
   // Stripe moved shipping between API versions — check every likely spot.

@@ -14,8 +14,8 @@ export type Print = {
   src: string;         // /photos/...
   w: number;
   h: number;
-  paper: string;       // "Archival matte fine-art, 270gsm · giclée"
-  printFileUrl?: string; // high-res file Prodigi prints from; falls back to the web image
+  paper: string;       // "Hahnemühle Photo Rag, 308gsm, 100% cotton · giclée"
+  printFileUrl?: string; // high-res file Prodigi prints from; no file = webhook won't order
   sizes: PrintSize[];
 };
 
@@ -31,7 +31,7 @@ export const prints: Print[] = [
     src: "/photos/fieldwork/DSC02270.jpg",
     w: 1000,
     h: 667,
-    paper: "Archival matte fine-art, 270gsm · giclée",
+    paper: "Hahnemühle Photo Rag, 308gsm, 100% cotton · giclée",
     sizes: [
       { label: "A4", dims: "21 × 30 cm", price: 50 },
       { label: "A3", dims: "30 × 42 cm", price: 70 },
@@ -47,7 +47,7 @@ export const prints: Print[] = [
     src: "/photos/collabs/DSC03378.jpg",
     w: 2000,
     h: 3000,
-    paper: "Archival matte fine-art, 270gsm · giclée",
+    paper: "Hahnemühle Photo Rag, 308gsm, 100% cotton · giclée",
     sizes: [
       { label: "A4", dims: "21 × 30 cm", price: 50 },
       { label: "A3", dims: "30 × 42 cm", price: 70 },
@@ -63,7 +63,7 @@ export const prints: Print[] = [
     src: "/photos/fieldwork/DSC07527.jpg",
     w: 1000,
     h: 1500,
-    paper: "Archival matte fine-art, 270gsm · giclée",
+    paper: "Hahnemühle Photo Rag, 308gsm, 100% cotton · giclée",
     sizes: [
       { label: "A4", dims: "21 × 30 cm", price: 50 },
       { label: "A3", dims: "30 × 42 cm", price: 70 },
@@ -80,13 +80,14 @@ export function fromPrice(p: Print): number {
   return Math.min(...p.sizes.map((s) => s.price));
 }
 
-// Prodigi product SKUs per size, for automated fulfilment. Fill these from your
-// Prodigi catalogue for the chosen paper (e.g. Hahnemühle Photo Rag). The
-// "TODO_" values are placeholders — the webhook refuses to order until they're real.
+// Prodigi product SKUs per size, for automated fulfilment: Hahnemühle Photo Rag
+// 308gsm, global (printed at the lab nearest the buyer). Cost at decision time
+// (26.09.2026, EU): A4 €6 · A3 €12 · A2 €18 excl. shipping.
+// Print files need ~300dpi: A3 3508×4961px, A2 ~4961×7016px.
 export const PRODIGI_SKU_BY_SIZE: Record<string, string> = {
-  A4: "TODO_PRODIGI_SKU_A4",
-  A3: "TODO_PRODIGI_SKU_A3",
-  A2: "TODO_PRODIGI_SKU_A2",
+  A4: "GLOBAL-HPR-A4",
+  A3: "GLOBAL-HPR-A3",
+  A2: "GLOBAL-HPR-A2",
 };
 
 export function prodigiSkuFor(sizeLabel: string): string | undefined {

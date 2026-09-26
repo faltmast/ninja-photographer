@@ -37,7 +37,7 @@ export async function POST(request: Request) {
           unit_amount: Math.round(size.price * 100),
           product_data: {
             name: `${print.title} — ${size.label}`,
-            description: `${print.meta} · Archival fine-art giclée · ${size.dims}`,
+            description: `${print.meta} · Hahnemühle Photo Rag giclée · ${size.dims}`,
           },
         },
       });

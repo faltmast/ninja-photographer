@@ -66,8 +66,8 @@ export default async function PrintPage({
               <span className="text-foreground">{print.paper}</span>
             </div>
             <div className="flex justify-between">
-              <span>Printer</span>
-              <span className="text-foreground">Canon imagePROGRAF PRO, 12-pigment</span>
+              <span>Shipping</span>
+              <span className="text-foreground">A4 flat · A3 and A2 rolled in a tube</span>
             </div>
           </div>
 
