@@ -17,7 +17,12 @@ export async function POST(request: Request) {
       return Response.json({ error: "Unknown size" }, { status: 400 });
     }
 
-    const site = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+    // Return the buyer to the domain they bought on (vercel.app or the custom
+    // domain), so a domain switch needs no env change.
+    const site =
+      request.headers.get("origin") ||
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      "http://localhost:3000";
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",

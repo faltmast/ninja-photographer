@@ -29,7 +29,7 @@ body {
   letter-spacing: 0.01em;
 }
 
-/* legal pages (Impressum, Datenschutz, AGB, Widerruf) */
+/* legal pages (Legal Notice, Privacy, Terms, Withdrawal) */
 .legal {
   display: flex;
   flex-direction: column;

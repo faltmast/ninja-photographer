@@ -16,10 +16,10 @@ export function Legal({
           href="/"
           className="text-[13px] text-muted hover:text-foreground transition-colors"
         >
-          ← Zurück
+          ← Back
         </Link>
         <h1 className="text-[28px] text-foreground mt-4">{title}</h1>
-        {updated && <p className="text-[12px] text-muted mt-1 mb-4">Stand: {updated}</p>}
+        {updated && <p className="text-[12px] text-muted mt-1 mb-4">Last updated: {updated}</p>}
         <div className="legal mt-6">{children}</div>
       </div>
     </section>

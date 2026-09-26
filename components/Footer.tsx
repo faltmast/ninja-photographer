@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 const legal = [
-  { href: "/impressum", label: "Impressum" },
-  { href: "/datenschutz", label: "Datenschutz" },
-  { href: "/agb", label: "AGB" },
-  { href: "/widerruf", label: "Widerruf" },
+  { href: "/legal-notice", label: "Legal Notice" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
+  { href: "/withdrawal", label: "Withdrawal" },
 ];
 
 export function Footer() {
