@@ -1,26 +1,29 @@
 import { Legal } from "@/components/Legal";
+import { LEGAL_UPDATED, SELLER } from "@/lib/legal";
 
 export const metadata = { title: "Impressum — Ninja Photographer" };
 
 export default function ImpressumPage() {
   return (
-    <Legal title="Impressum">
+    <Legal title="Impressum" updated={LEGAL_UPDATED}>
       <h2>Angaben gemäß § 5 DDG</h2>
       <p>
-        [Voller Name]
+        {SELLER.name}
         <br />
-        [Straße und Hausnummer]
+        Ninja Photographer
         <br />
-        [PLZ und Ort]
+        {SELLER.street}
         <br />
-        Deutschland
+        {SELLER.city}
+        <br />
+        {SELLER.country}
       </p>
 
       <h2>Kontakt</h2>
       <p>
-        Telefon: [Telefonnummer]
+        Telefon: {SELLER.phone}
         <br />
-        E-Mail: [E-Mail-Adresse]
+        E-Mail: <a href={`mailto:${SELLER.email}`}>{SELLER.email}</a>
       </p>
 
       <h2>Umsatzsteuer</h2>
@@ -30,17 +33,7 @@ export default function ImpressumPage() {
       </p>
 
       <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-      <p>[Voller Name], Anschrift wie oben.</p>
-
-      <h2>EU-Streitschlichtung</h2>
-      <p>
-        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS)
-        bereit:{" "}
-        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noreferrer">
-          https://ec.europa.eu/consumers/odr/
-        </a>
-        . Unsere E-Mail-Adresse finden Sie oben in diesem Impressum.
-      </p>
+      <p>{SELLER.name}, Anschrift wie oben.</p>
 
       <h2>Verbraucherstreitbeilegung</h2>
       <p>
