@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CartLink } from "@/components/CartLink";
 
 const nav = [
   { href: "/fieldwork", label: "Fieldwork" },
@@ -26,6 +27,7 @@ export function TopBar() {
             {item.label}
           </Link>
         ))}
+        <CartLink />
         <a
           href="https://www.instagram.com/faltmast/"
           target="_blank"

@@ -1,6 +1,7 @@
 import { stripe } from "@/lib/stripe";
 import { getPrint, prodigiSkuFor } from "@/lib/prints";
 import { createProdigiOrder } from "@/lib/prodigi";
+import { decodeOrderItems, type OrderItem } from "@/lib/order";
 
 // Stripe calls this after a completed payment. We verify the signature, then
 // place the print order with Prodigi automatically (hands-off fulfilment).
@@ -40,19 +41,24 @@ export async function POST(request: Request) {
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 async function fulfil(session: any) {
-  const printId: string | undefined = session.metadata?.printId;
-  const sizeLabel: string | undefined = session.metadata?.size;
-
-  const print = printId ? getPrint(printId) : undefined;
-  if (!print) throw new Error(`Unknown printId in session: ${printId}`);
-
-  const sku = sizeLabel ? prodigiSkuFor(sizeLabel) : undefined;
-  if (!sku || sku.startsWith("TODO")) {
-    throw new Error(`No real Prodigi SKU set for size "${sizeLabel}"`);
-  }
+  // Cart orders carry "items"; single-print sessions from before the cart carry
+  // printId + size.
+  const ordered: OrderItem[] = session.metadata?.items
+    ? decodeOrderItems(session.metadata.items)
+    : [{ printId: session.metadata?.printId, size: session.metadata?.size, qty: 1 }];
 
   const site = process.env.NEXT_PUBLIC_SITE_URL || "";
-  const imageUrl = print.printFileUrl || `${site}${print.src}`;
+  const items = ordered.map(({ printId, size, qty }) => {
+    const print = printId ? getPrint(printId) : undefined;
+    if (!print) throw new Error(`Unknown printId in session: ${printId}`);
+
+    const sku = size ? prodigiSkuFor(size) : undefined;
+    if (!sku || sku.startsWith("TODO")) {
+      throw new Error(`No real Prodigi SKU set for size "${size}"`);
+    }
+
+    return { sku, copies: qty, imageUrl: print.printFileUrl || `${site}${print.src}` };
+  });
 
   // Stripe moved shipping between API versions — check every likely spot.
   const shipping =
@@ -77,9 +83,7 @@ async function fulfil(session: any) {
 
   const order = await createProdigiOrder({
     merchantReference: session.id,
-    sku,
-    copies: 1,
-    imageUrl,
+    items,
     recipient,
   });
 

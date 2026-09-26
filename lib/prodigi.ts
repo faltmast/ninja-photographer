@@ -23,14 +23,18 @@ export type ProdigiRecipient = {
   };
 };
 
-export async function createProdigiOrder(params: {
-  merchantReference: string; // Stripe session id — our idempotency handle
+export type ProdigiItem = {
   sku: string;
   copies: number;
   imageUrl: string; // publicly reachable print file
+};
+
+export async function createProdigiOrder(params: {
+  merchantReference: string; // Stripe session id — our idempotency handle
+  items: ProdigiItem[]; // every print in the cart → one order, one shipment where possible
   recipient: ProdigiRecipient;
 }) {
-  const { merchantReference, sku, copies, imageUrl, recipient } = params;
+  const { merchantReference, items, recipient } = params;
 
   const res = await fetch(`${BASE}/Orders`, {
     method: "POST",
@@ -42,14 +46,12 @@ export async function createProdigiOrder(params: {
       merchantReference,
       shippingMethod: "Standard",
       recipient,
-      items: [
-        {
-          sku,
-          copies,
-          sizing: "fillPrintArea",
-          assets: [{ printArea: "default", url: imageUrl }],
-        },
-      ],
+      items: items.map((item) => ({
+        sku: item.sku,
+        copies: item.copies,
+        sizing: "fillPrintArea",
+        assets: [{ printArea: "default", url: item.imageUrl }],
+      })),
     }),
   });
 

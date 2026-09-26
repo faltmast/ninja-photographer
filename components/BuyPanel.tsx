@@ -1,35 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { Print } from "@/lib/prints";
+import { addToCart } from "@/lib/cart";
+import { SHOP_OPEN } from "@/lib/shop";
 
 export function BuyPanel({ print }: { print: Print }) {
   const [i, setI] = useState(0); // start at the base size; small steps invite the upgrade
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [added, setAdded] = useState(false);
   const size = print.sizes[i];
 
-  async function acquire() {
-    if (loading) return;
-    setLoading(true);
-    setError(false);
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ printId: print.id, sizeLabel: size.label }),
-      });
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url; // → Stripe Checkout
-      } else {
-        setError(true);
-        setLoading(false);
-      }
-    } catch {
-      setError(true);
-      setLoading(false);
-    }
+  function add() {
+    addToCart(print.id, size.label);
+    setAdded(true);
   }
 
   return (
@@ -44,7 +28,10 @@ export function BuyPanel({ print }: { print: Print }) {
               <button
                 key={s.label}
                 type="button"
-                onClick={() => setI(idx)}
+                onClick={() => {
+                  setI(idx);
+                  setAdded(false);
+                }}
                 className={`flex items-center justify-between border px-4 py-3 text-left transition-colors ${
                   active ? "border-foreground" : "border-black/15 hover:border-foreground/40"
                 }`}
@@ -66,19 +53,27 @@ export function BuyPanel({ print }: { print: Print }) {
           <div className="text-[28px] leading-none text-foreground tabular-nums">€{size.price}</div>
         </div>
 
-        <button
-          type="button"
-          onClick={acquire}
-          disabled={loading}
-          className="bg-foreground text-background px-6 py-3 text-[13px] hover:bg-accent transition-colors disabled:opacity-50"
-        >
-          {loading ? "One moment…" : "Acquire →"}
-        </button>
+        {SHOP_OPEN ? (
+          <button
+            type="button"
+            onClick={add}
+            className="bg-foreground text-background px-6 py-3 text-[13px] hover:bg-accent transition-colors"
+          >
+            Add to cart
+          </button>
+        ) : (
+          <span className="border border-black/15 text-muted px-6 py-3 text-[13px]">
+            Available soon
+          </span>
+        )}
       </div>
 
-      {error && (
-        <p className="text-[12px] text-muted">
-          Couldn&apos;t open checkout just now. Please try again in a moment.
+      {added && (
+        <p className="text-[13px] text-muted">
+          Added {size.label} to your cart.{" "}
+          <Link href="/cart" className="text-accent hover:underline">
+            View cart →
+          </Link>
         </p>
       )}
     </div>
