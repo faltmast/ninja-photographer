@@ -5,34 +5,50 @@ import Image from "next/image";
 import Link from "next/link";
 
 const MAX_TILT = 8; // degrees
+const RANGE = 20; // degrees of phone movement for a full tilt
+
+type Perm = { requestPermission?: () => Promise<string> };
 
 // Landing print: tilts toward the mouse (desktop) or with the phone (gyroscope),
 // with a soft shadow that moves against the tilt so the print floats over the page.
 export function IntroPrint() {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  // iOS only hands out motion data after a tap on a permission request.
+  const [needsTap, setNeedsTap] = useState(false);
   const frame = useRef<HTMLAnchorElement>(null);
+  const base = useRef<{ beta: number; gamma: number } | null>(null);
 
   useEffect(() => {
     const onOrient = (e: DeviceOrientationEvent) => {
       if (e.beta == null || e.gamma == null) return;
-      const x = Math.max(-1, Math.min(1, (e.beta - 45) / 30)); // phone held at ~45°
-      const y = Math.max(-1, Math.min(1, e.gamma / 30));
+      // Calibrate to however the phone is held when the first reading arrives.
+      if (!base.current) base.current = { beta: e.beta, gamma: e.gamma };
+      const x = Math.max(-1, Math.min(1, (e.beta - base.current.beta) / RANGE));
+      const y = Math.max(-1, Math.min(1, (e.gamma - base.current.gamma) / RANGE));
       setTilt({ x: -x * MAX_TILT, y: y * MAX_TILT });
     };
     window.addEventListener("deviceorientation", onOrient);
 
-    // iOS only grants motion after a user gesture: ask on the first tap anywhere.
-    const DOE = window.DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<string> };
-    const ask = () => {
-      DOE.requestPermission?.().catch(() => {});
-    };
-    if (DOE?.requestPermission) window.addEventListener("touchend", ask, { once: true });
+    const DOE = window.DeviceOrientationEvent as unknown as Perm;
+    const touch = window.matchMedia("(pointer: coarse)").matches;
+    const t = setTimeout(() => setNeedsTap(touch && typeof DOE?.requestPermission === "function"), 0);
 
     return () => {
+      clearTimeout(t);
       window.removeEventListener("deviceorientation", onOrient);
-      window.removeEventListener("touchend", ask);
     };
   }, []);
+
+  async function onClick(e: React.MouseEvent) {
+    if (!needsTap) return; // normal click: enter the portfolio
+    e.preventDefault(); // first tap on iPhone: switch motion on instead
+    const DOE = window.DeviceOrientationEvent as unknown as Perm;
+    try {
+      await DOE.requestPermission?.();
+    } catch {}
+    base.current = null;
+    setNeedsTap(false);
+  }
 
   function onMove(e: React.PointerEvent) {
     if (e.pointerType !== "mouse" || !frame.current) return;
@@ -43,11 +59,12 @@ export function IntroPrint() {
   }
 
   return (
-    <div className="w-full max-w-[440px]" style={{ perspective: "1000px" }}>
+    <div className="w-full max-w-[440px] flex flex-col items-center gap-3" style={{ perspective: "1000px" }}>
       <Link
         ref={frame}
         href="/fieldwork"
         aria-label="Enter portfolio"
+        onClick={onClick}
         onPointerMove={onMove}
         onPointerLeave={(e) => e.pointerType === "mouse" && setTilt({ x: 0, y: 0 })}
         className="relative block w-full aspect-[9/16] bg-black/[0.02] overflow-hidden motion-reduce:!transform-none"
@@ -66,6 +83,7 @@ export function IntroPrint() {
           priority
         />
       </Link>
+      {needsTap && <p className="text-[12px] text-muted">Tap the print, then tilt your phone</p>}
     </div>
   );
 }
