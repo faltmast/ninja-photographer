@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { contactHero } from "@/lib/photos";
+import { SELLER } from "@/lib/legal";
 
 export const metadata = { title: "Contact — Ninja Photographer" };
 
@@ -39,6 +40,15 @@ export default function ContactPage() {
           >
             → Ready to tell your story?
           </a>
+          <p className="text-[14px] text-white/90 mt-3">
+            Or write to{" "}
+            <a
+              href={`mailto:${SELLER.email}`}
+              className="text-white underline underline-offset-4 hover:text-white/70"
+            >
+              {SELLER.email}
+            </a>
+          </p>
         </div>
       </div>
     </div>
