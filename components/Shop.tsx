@@ -27,23 +27,23 @@ export function Shop({ prints }: { prints: Print[] }) {
     <section className="flex-1 px-2 md:px-3 pb-3 min-h-0 overflow-hidden">
       <div
         ref={scrollerRef}
-        className="flex flex-col md:flex-row gap-8 md:gap-5 h-full
-                   overflow-y-auto md:overflow-y-hidden md:overflow-x-auto"
+        className="flex flex-row gap-4 md:gap-5 h-full
+                   overflow-x-auto overflow-y-hidden snap-x snap-mandatory md:snap-none"
       >
         {prints.map((p, idx) => {
           return (
             <Link
               key={p.id}
               href={`/shop/${p.id}`}
-              className="group flex flex-col md:h-full md:shrink-0
-                         md:w-[34vw] md:min-w-[260px] md:max-w-[380px]"
+              className="group flex flex-col h-full shrink-0 snap-center
+                         w-[80vw] md:w-[34vw] md:min-w-[260px] md:max-w-[380px]"
             >
-              <div className="relative w-full md:flex-1 aspect-[4/5] md:aspect-auto bg-black/[0.02] overflow-hidden">
+              <div className="relative w-full flex-1 bg-black/[0.02] overflow-hidden">
                 <Image
                   src={p.src}
                   alt={p.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, 34vw"
+                  sizes="(max-width: 768px) 80vw, 34vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   priority={idx === 0}
                 />
