@@ -10,14 +10,15 @@ const nav = [
 
 export function TopBar() {
   return (
-    <header className="w-full px-6 md:px-10 py-5 flex items-center justify-between">
+    // Phone: logo on its own line, menu underneath. Desktop: one row.
+    <header className="w-full px-6 md:px-10 py-4 md:py-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
       <Link
         href="/"
-        className="text-[24px] font-normal tracking-tight text-foreground"
+        className="text-[22px] md:text-[24px] font-normal tracking-tight text-foreground whitespace-nowrap"
       >
         Ninja Photographer
       </Link>
-      <nav className="flex items-center gap-6 text-[16px]">
+      <nav className="flex items-center gap-5 md:gap-6 text-[15px] md:text-[16px]">
         {nav.map((item) => (
           <Link
             key={item.href}
