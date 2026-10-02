@@ -19,16 +19,16 @@ export default function ContactPage() {
       {/* dark scrim so the white text stays readable over a bright image */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10" />
 
-      <div className="absolute inset-x-0 bottom-0 p-8 md:p-14">
-        <div className="max-w-md text-white leading-relaxed [text-shadow:0_1px_4px_rgba(0,0,0,0.45)]">
-          <p className="font-semibold text-[16px] mb-3">
+      <div className="absolute inset-x-0 bottom-0 p-6 md:p-14">
+        <div className="max-w-3xl text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.45)]">
+          <h1 className="text-display mb-5 md:mb-6">
             I photograph people doing what they love.
-          </p>
-          <p className="text-[14px] text-white/90 mb-2">
+          </h1>
+          <p className="text-lead text-white/90 mb-2 max-w-2xl">
             My work celebrates the beauty of dedication and the intimate moments
             of creativity.
           </p>
-          <p className="text-[14px] text-white/90 mb-6">
+          <p className="text-lead text-white/90 mb-6 md:mb-8 max-w-2xl">
             I specialize in photographing people engaged in their passions,
             documenting their processes.
           </p>
@@ -36,11 +36,11 @@ export default function ContactPage() {
             href="https://tally.so/r/3x9O6G"
             target="_blank"
             rel="noreferrer"
-            className="text-[14px] text-white underline underline-offset-4 hover:text-white/70"
+            className="text-lead text-white underline underline-offset-4 hover:text-white/70"
           >
             → Ready to tell your story?
           </a>
-          <p className="text-[14px] text-white/90 mt-3">
+          <p className="text-body text-white/90 mt-3">
             Or write to{" "}
             <a
               href={`mailto:${SELLER.email}`}

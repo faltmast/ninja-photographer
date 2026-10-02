@@ -9,7 +9,7 @@ export default function IntroPage() {
       <IntroPrint />
       <Link
         href="/fieldwork"
-        className="text-[20px] text-foreground hover:underline"
+        className="text-lead text-foreground hover:underline"
       >
         → Enter Portfolio
       </Link>

@@ -34,14 +34,14 @@ export default async function SeriesDetailPage({
         <div className="shrink-0">
           <Link
             href="/series"
-            className="text-[13px] text-muted hover:text-foreground transition-colors"
+            className="text-small text-muted hover:text-foreground transition-colors"
           >
             ← Series
           </Link>
-          <h1 className="text-[26px] leading-tight text-foreground mt-1">{s.title}</h1>
-          <p className="text-[14px] text-muted mt-0.5">{s.meta}</p>
+          <h1 className="text-title text-foreground mt-1">{s.title}</h1>
+          <p className="text-body text-muted mt-0.5">{s.meta}</p>
         </div>
-        <p className="text-[15px] leading-relaxed text-foreground/80 max-w-[640px]">{s.text}</p>
+        <p className="text-lead text-foreground/80 max-w-[760px]">{s.text}</p>
       </div>
       <Gallery photos={s.photos} />
     </>

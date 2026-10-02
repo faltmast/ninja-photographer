@@ -50,19 +50,19 @@ export default async function PrintPage({
         <aside className="md:w-[380px] md:h-full md:overflow-y-auto flex flex-col gap-6 pb-8">
           <Link
             href="/shop"
-            className="text-[13px] text-muted hover:text-foreground transition-colors"
+            className="text-small text-muted hover:text-foreground transition-colors"
           >
             ← Prints
           </Link>
 
           <div>
-            <h1 className="text-[26px] leading-tight text-foreground">{print.title}</h1>
-            <p className="text-[14px] text-muted mt-1">{print.meta}</p>
+            <h1 className="text-title leading-tight text-foreground">{print.title}</h1>
+            <p className="text-body text-muted mt-1">{print.meta}</p>
           </div>
 
-          <p className="text-[15px] leading-relaxed text-foreground/80">{print.story}</p>
+          <p className="text-body leading-relaxed text-foreground/80">{print.story}</p>
 
-          <div className="border-t border-black/10 pt-4 flex flex-col gap-1.5 text-[13px] text-muted">
+          <div className="border-t border-black/10 pt-4 flex flex-col gap-1.5 text-small text-muted">
             <div className="flex justify-between">
               <span>Paper</span>
               <span className="text-foreground">{print.paper}</span>

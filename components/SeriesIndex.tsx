@@ -50,10 +50,10 @@ export function SeriesIndex({ series }: { series: Series[] }) {
 
             <div className="pt-3 flex items-start justify-between gap-4">
               <div>
-                <h2 className="text-[18px] leading-tight text-foreground">{s.title}</h2>
-                <p className="text-[13px] text-muted mt-0.5">{s.meta}</p>
+                <h2 className="text-lead text-foreground">{s.title}</h2>
+                <p className="text-small text-muted mt-0.5">{s.meta}</p>
               </div>
-              <span className="text-[13px] text-accent group-hover:underline underline-offset-4 shrink-0">
+              <span className="text-body text-accent group-hover:underline underline-offset-4 shrink-0">
                 View →
               </span>
             </div>

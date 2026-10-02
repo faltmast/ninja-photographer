@@ -6,7 +6,7 @@ const legal = [
 
 export function Footer() {
   return (
-    <footer className="w-full px-6 md:px-10 py-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-[11px] text-muted">
+    <footer className="w-full px-6 md:px-10 py-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-small text-muted">
       <span>© Alexis Papageorgiou</span>
       <nav className="flex flex-wrap items-center gap-x-5 gap-y-1">
         {legal.map((l) => (

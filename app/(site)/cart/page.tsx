@@ -9,7 +9,7 @@ export default function CartPage() {
   return (
     <section className="flex-1 min-h-0 overflow-y-auto px-6 md:px-10 py-8">
       <div className="max-w-[680px] mx-auto pb-16">
-        <h1 className="text-[28px] text-foreground mb-6">Cart</h1>
+        <h1 className="text-title text-foreground mb-6">Cart</h1>
         <CartView />
       </div>
     </section>

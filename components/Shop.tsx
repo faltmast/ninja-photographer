@@ -51,17 +51,17 @@ export function Shop({ prints }: { prints: Print[] }) {
 
               <div className="pt-3 flex items-start justify-between gap-4">
                 <div>
-                  <h2 className="text-[18px] leading-tight text-foreground">{p.title}</h2>
-                  <p className="text-[13px] text-muted mt-0.5">{p.meta}</p>
-                  <p className="text-[11px] text-muted mt-2 tracking-[0.12em] uppercase">
+                  <h2 className="text-lead leading-tight text-foreground">{p.title}</h2>
+                  <p className="text-small text-muted mt-0.5">{p.meta}</p>
+                  <p className="text-small text-muted mt-2 tracking-[0.12em] uppercase">
                     Archival fine-art print
                   </p>
                 </div>
                 <div className="text-right shrink-0">
-                  <div className="text-[16px] text-foreground">
+                  <div className="text-body text-foreground">
                     {`from €${fromPrice(p)}`}
                   </div>
-                  <span className="text-[13px] text-accent group-hover:underline underline-offset-4">
+                  <span className="text-small text-accent group-hover:underline underline-offset-4">
                     View →
                   </span>
                 </div>
