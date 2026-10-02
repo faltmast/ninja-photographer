@@ -16,8 +16,8 @@ export default function ContactPage() {
         priority
       />
 
-      {/* dark scrim so the white text stays readable over a bright image */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10" />
+      {/* dark scrim so the white text and the white menu stay readable over a bright image */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/50" />
 
       <div className="absolute inset-x-0 bottom-0 p-6 md:p-14">
         <div className="max-w-3xl text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.45)]">

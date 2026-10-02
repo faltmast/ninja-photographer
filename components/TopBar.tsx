@@ -17,6 +17,7 @@ const nav = [
 
 // Pages whose image runs behind the top bar. There the bar is see-through with white text.
 function isOverImage(pathname: string) {
+  if (pathname === "/contact") return true;
   return pathname === "/shop" && !SHOP_OPEN;
 }
 
