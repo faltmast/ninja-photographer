@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { CartLink } from "@/components/CartLink";
+import { series } from "@/lib/series";
 
 const nav = [
   { href: "/fieldwork", label: "Fieldwork" },
   { href: "/collabs", label: "Collabs" },
+  // Hidden until lib/series.ts has at least one project.
+  ...(series.length > 0 ? [{ href: "/series", label: "Series" }] : []),
   { href: "/shop", label: "Shop" },
   { href: "/contact", label: "Contact" },
 ];
