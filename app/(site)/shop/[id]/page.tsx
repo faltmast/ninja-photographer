@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { BuyPanel } from "@/components/BuyPanel";
 import { getPrint, prints } from "@/lib/prints";
+import { SHOP_OPEN } from "@/lib/shop";
 
 export function generateStaticParams() {
   return prints.map((p) => ({ id: p.id }));
@@ -25,6 +26,7 @@ export default async function PrintPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  if (!SHOP_OPEN) redirect("/shop");
   const { id } = await params;
   const print = getPrint(id);
   if (!print) notFound();
