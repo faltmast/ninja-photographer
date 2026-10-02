@@ -29,8 +29,11 @@ export default async function SeriesDetailPage({
   const s = getSeries(slug);
   if (!s) notFound();
 
-  // The series after this one (wraps around), so people can go from project to project.
-  const next = series.length > 1 ? series[(series.indexOf(s) + 1) % series.length] : null;
+  // Neighbours in the list (wrapping around), so people can go from project to project.
+  const i = series.indexOf(s);
+  const many = series.length > 1;
+  const next = many ? series[(i + 1) % series.length] : null;
+  const prev = series.length > 2 ? series[(i - 1 + series.length) % series.length] : null;
   const nextTile = next && (
     <Link
       href={`/series/${next.slug}`}
@@ -54,18 +57,35 @@ export default async function SeriesDetailPage({
 
   return (
     <>
-      <div className="px-6 md:px-10 pb-4 flex flex-col md:flex-row md:items-end gap-2 md:gap-10">
-        <div className="shrink-0">
-          <Link
-            href="/series"
-            className="text-small text-muted hover:text-foreground transition-colors"
-          >
-            ← Series
+      <div className="px-6 md:px-10 pb-4">
+        {/* always in view: back to the list, and straight on to the neighbouring series */}
+        <div className="flex items-center justify-between gap-4 text-body">
+          <Link href="/series" className="text-muted hover:text-foreground transition-colors">
+            ← All series
           </Link>
-          <h1 className="text-title text-foreground mt-1">{s.title}</h1>
-          <p className="text-body text-muted mt-0.5">{s.meta}</p>
+          {next && (
+            <nav className="flex items-center gap-5 md:gap-8">
+              {prev && (
+                <Link
+                  href={`/series/${prev.slug}`}
+                  className="text-muted hover:text-foreground transition-colors"
+                >
+                  ← Previous
+                </Link>
+              )}
+              <Link href={`/series/${next.slug}`} className="text-foreground hover:text-accent transition-colors">
+                Next<span className="hidden md:inline">: {next.title}</span> →
+              </Link>
+            </nav>
+          )}
         </div>
-        <p className="text-lead text-foreground/80 max-w-[760px]">{s.text}</p>
+        <div className="mt-2 flex flex-col md:flex-row md:items-end gap-2 md:gap-10">
+          <div className="shrink-0">
+            <h1 className="text-title text-foreground">{s.title}</h1>
+            <p className="text-body text-muted mt-0.5">{s.meta}</p>
+          </div>
+          <p className="text-lead text-foreground/80 max-w-[760px]">{s.text}</p>
+        </div>
       </div>
       <Gallery photos={s.photos} after={nextTile} />
     </>
