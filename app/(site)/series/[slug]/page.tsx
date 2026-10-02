@@ -57,9 +57,9 @@ export default async function SeriesDetailPage({
 
   return (
     <>
-      <div className="px-6 md:px-10 pb-4">
+      <div className="px-6 md:px-10 pb-5 md:pb-7">
         {/* always in view: back to the list, and straight on to the neighbouring series */}
-        <div className="flex items-center justify-between gap-4 text-body">
+        <div className="flex items-center justify-between gap-4 text-body border-t border-black/10 pt-3">
           <Link href="/series" className="text-muted hover:text-foreground transition-colors">
             ← All series
           </Link>
@@ -79,12 +79,13 @@ export default async function SeriesDetailPage({
             </nav>
           )}
         </div>
-        <div className="mt-2 flex flex-col md:flex-row md:items-end gap-2 md:gap-10">
-          <div className="shrink-0">
-            <h1 className="text-title text-foreground">{s.title}</h1>
-            <p className="text-body text-muted mt-0.5">{s.meta}</p>
+        {/* two columns on one grid: big title left, place and text right, both starting at the same height */}
+        <div className="mt-3 md:mt-5 grid md:grid-cols-2 gap-x-10 gap-y-3 items-start">
+          <h1 className="text-display text-foreground">{s.title}</h1>
+          <div className="md:pt-2">
+            <p className="text-small uppercase tracking-[0.14em] text-muted">{s.meta}</p>
+            <p className="text-lead text-foreground/80 mt-2 max-w-[34em]">{s.text}</p>
           </div>
-          <p className="text-lead text-foreground/80 max-w-[760px]">{s.text}</p>
         </div>
       </div>
       <Gallery photos={s.photos} after={nextTile} />
