@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import type { Photo } from "@/lib/photos";
 
-export function Gallery({ photos }: { photos: Photo[] }) {
+// `after` is an optional last tile, shown behind the final photo.
+export function Gallery({ photos, after }: { photos: Photo[]; after?: React.ReactNode }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -51,6 +52,7 @@ export function Gallery({ photos }: { photos: Photo[] }) {
             </div>
           );
         })}
+        {after}
       </div>
     </section>
   );
