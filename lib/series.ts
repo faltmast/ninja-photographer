@@ -32,7 +32,7 @@ export const series: Series[] = [
     title: "One Frame A Day",
     meta: "Greece 2026",
     text: "Four weeks in Greece, one frame a day. I connect with the people I meet along the way and capture the moments and experiences we share.",
-    cover: ONE_FRAME_A_DAY[5],
+    cover: ONE_FRAME_A_DAY[0],
     photos: ONE_FRAME_A_DAY,
   },
 ];
